@@ -37,6 +37,7 @@ public class SuperMarketInventoryManagementServiceImplementation implements Supe
 					}
 				}
 			}
+		
 			if (superMarketFound && !itemAvailable) {
 				throw new ItemNotAvailableException("Item not available");
 			} else if (!superMarketFound) {
@@ -46,6 +47,14 @@ public class SuperMarketInventoryManagementServiceImplementation implements Supe
 		} catch (DoaException e) {
 			// TODO Auto-generated catch block
 			throw new ServiceLayerException(e);
+		}
+		catch(ItemNotAvailableException e)
+		{
+			throw new ServiceLayerException(e);
+		}
+		catch(NoSuperMarketFoundException e)
+		{
+			throw new NoSuperMarketFoundException(e);
 		}
 	}
 
